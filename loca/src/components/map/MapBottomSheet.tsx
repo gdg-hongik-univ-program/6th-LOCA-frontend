@@ -10,7 +10,7 @@ type MapBottomSheetProps = {
 
 export function MapBottomSheet({ place }: MapBottomSheetProps) {
   return (
-    <aside className="absolute inset-x-4 bottom-24 z-10 rounded-2xl bg-white p-4 shadow-[0_18px_50px_rgba(0,0,0,0.16)]">
+    <aside className="absolute inset-x-4 bottom-24 z-10 rounded-2xl bg-white p-4 shadow-[0_18px_50px_rgba(0,0,0,0.16)] md:inset-x-auto md:bottom-8 md:left-8 md:w-[380px]">
       <div className="flex gap-3">
         <img alt="" className="h-20 w-20 rounded-xl object-cover" src={place.imageUrl} />
         <div className="min-w-0 flex-1">

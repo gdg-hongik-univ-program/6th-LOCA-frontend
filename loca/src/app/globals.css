@@ -64,6 +64,10 @@ input {
   padding-bottom: calc(92px + env(safe-area-inset-bottom));
 }
 
+.app-content {
+  min-height: 100dvh;
+}
+
 .card-shadow {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 }
@@ -75,4 +79,26 @@ input {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 28px;
+  }
+
+  .phone-shell {
+    width: min(100%, 1180px);
+    min-height: calc(100dvh - 56px);
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .safe-bottom {
+    padding-bottom: 48px;
+  }
+
+  .app-content {
+    min-height: calc(100dvh - 56px);
+    padding-left: 256px;
+  }
 }

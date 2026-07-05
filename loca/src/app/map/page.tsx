@@ -8,8 +8,8 @@ import { categories, mockPlaces } from "@/src/mocks/places";
 export default function MapPage() {
   return (
     <AppShell flush>
-      <section className="absolute inset-x-0 top-0 z-10 px-5 pt-5">
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
+      <section className="absolute inset-x-0 top-0 z-10 px-5 pt-5 md:left-64 md:px-10 md:pt-8">
+        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_12px_30px_rgba(0,0,0,0.08)] md:max-w-2xl">
           <Icon className="h-5 w-5 text-zinc-400" name="search" />
           <span className="flex-1 text-sm font-semibold text-zinc-400">장소나 동네를 검색해보세요</span>
           <Link aria-label="목록으로 보기" className="text-[var(--brand)]" href="/explore">

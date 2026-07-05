@@ -10,7 +10,7 @@ type AppShellProps = {
 export function AppShell({ children, showNav = true, flush = false }: AppShellProps) {
   return (
     <div className="phone-shell relative overflow-hidden">
-      <main className={`${showNav ? "safe-bottom" : ""} ${flush ? "" : "px-5 pt-5"}`}>{children}</main>
+      <main className={`app-content ${showNav ? "safe-bottom" : ""} ${flush ? "" : "px-5 pt-5 md:px-10 md:pt-10"}`}>{children}</main>
       {showNav ? <BottomNav /> : null}
     </div>
   );
