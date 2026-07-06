@@ -66,7 +66,7 @@ export default function HomePage() {
             </Link>
 
             <Link
-              className="block rounded-2xl bg-[#efefe4] p-5 text-[var(--text)] md:p-7"
+            className="block rounded-2xl bg-zinc-100 p-5 text-[var(--text)] md:p-7"
               href="/explore">
               <div className="flex items-start justify-between">
                 <div>
@@ -122,6 +122,17 @@ export default function HomePage() {
           </div>
         </section>
       </div>
+
+      <section className="mt-6 grid gap-3 md:grid-cols-2">
+        <Link className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]" href="/place/new">
+          <p className="text-lg font-extrabold">Private Place 등록</p>
+          <p className="mt-2 text-sm font-semibold text-zinc-500">지도에 없는 나만의 장소를 기록해보세요.</p>
+        </Link>
+        <Link className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]" href="/collections">
+          <p className="text-lg font-extrabold">장소 컬렉션</p>
+          <p className="mt-2 text-sm font-semibold text-zinc-500">장소들을 코스로 묶고 링크로 공유하세요.</p>
+        </Link>
+      </section>
     </AppShell>
   );
 }

@@ -10,7 +10,7 @@ type ButtonProps = {
 };
 
 const variants = {
-  primary: "bg-[var(--brand)] text-white hover:bg-[#17462c]",
+  primary: "bg-[var(--brand)] text-white hover:bg-[var(--primary-hover)]",
   secondary: "border border-[var(--border)] bg-white text-[var(--text)] hover:bg-zinc-50",
   ghost: "bg-transparent text-[var(--text-secondary)] hover:bg-zinc-100",
 };

@@ -4,7 +4,8 @@ import { Button } from "@/src/components/common/Button";
 import { Icon } from "@/src/components/common/Icon";
 import { TagChip } from "@/src/components/common/TagChip";
 import { AppShell } from "@/src/components/layout/AppShell";
-import { getPlaceById, mockPlaces } from "@/src/mocks/places";
+import { mockPlaces } from "@/src/mocks/places";
+import { getPlaceById } from "@/src/services/placeService";
 
 const copy = {
   back: "\ub4a4\ub85c\uac00\uae30",
@@ -21,7 +22,7 @@ export function generateStaticParams() {
 
 export default async function PlaceDetailPage({ params }: PageProps<"/place/[id]">) {
   const { id } = await params;
-  const place = getPlaceById(id);
+  const place = await getPlaceById(id);
 
   if (!place) {
     notFound();

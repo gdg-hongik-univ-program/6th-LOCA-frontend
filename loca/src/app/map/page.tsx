@@ -3,22 +3,26 @@ import { Icon } from "@/src/components/common/Icon";
 import { TagChip } from "@/src/components/common/TagChip";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { KakaoMap } from "@/src/components/map/KakaoMap";
-import { categories, mockPlaces } from "@/src/mocks/places";
+import { getPlaces } from "@/src/services/placeService";
+import { getTags } from "@/src/services/tagService";
 
-export default function MapPage() {
+const copy = {
+  search: "\uc7a5\uc18c\ub098 \ub3d9\ub124\ub97c \uac80\uc0c9\ud574\ubcf4\uc138\uc694",
+  list: "\ubaa9\ub85d\uc73c\ub85c \ubcf4\uae30",
+};
+
+export default async function MapPage() {
+  const [places, tags] = await Promise.all([getPlaces(), getTags()]);
+  const categories = tags.slice(0, 5).map((tag) => ({ key: tag.id, label: tag.name }));
+
   return (
     <AppShell flush>
       <div className="flex h-full w-full flex-col overflow-hidden overscroll-none touch-none">
-        <section className="w-full px-5 pt-5 pb-3 md:px-10 md:pt-8 touch-auto bg-transparent z-10">
+        <section className="z-10 w-full touch-auto bg-transparent px-5 pb-3 pt-5 md:px-10 md:pt-8">
           <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_12px_30px_rgba(0,0,0,0.08)] md:max-w-2xl">
             <Icon className="h-5 w-5 text-zinc-400" name="search" />
-            <span className="flex-1 text-sm font-semibold text-zinc-400">
-              장소나 동네를 검색해보세요
-            </span>
-            <Link
-              aria-label="목록으로 보기"
-              className="text-[var(--brand)]"
-              href="/explore">
+            <span className="flex-1 text-sm font-semibold text-zinc-400">{copy.search}</span>
+            <Link aria-label={copy.list} className="text-[var(--brand)]" href="/explore">
               <Icon name="x" />
             </Link>
           </div>
@@ -30,8 +34,8 @@ export default function MapPage() {
             ))}
           </div>
         </section>
-        <div className="absolute inset-y-0 right-0 left-0 md:left-64 w-auto touch-auto">
-          <KakaoMap places={mockPlaces} />
+        <div className="absolute inset-y-0 left-0 right-0 w-auto touch-auto md:left-64">
+          <KakaoMap places={places} />
         </div>
       </div>
     </AppShell>

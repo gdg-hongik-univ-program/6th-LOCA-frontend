@@ -37,7 +37,7 @@ export function BottomNav() {
             <Link
               aria-label={item.label}
               className={`flex h-10 w-10 items-center justify-center rounded-full transition md:h-12 md:w-full md:justify-start md:gap-3 md:px-4 md:text-sm md:font-bold ${
-                active ? "bg-[#eef5ee] text-[var(--brand)]" : "text-zinc-400 hover:bg-zinc-50"
+                active ? "bg-zinc-100 text-[var(--brand)]" : "text-zinc-400 hover:bg-zinc-50"
               }`}
               href={item.href}
               key={`${item.icon}-${item.label}`}

@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #111111;
-  --primary-hover: #2a2a2a;
-  --accent: #4f46e5;
-  --brand: #505050;
-  --brand-soft: #eaf1e8;
+  --primary: #18181b;
+  --primary-hover: #27272a;
+  --accent: #6366f1;
+  --brand: #18181b;
+  --brand-soft: #f4f4f5;
   --background: #fafafa;
   --surface: #ffffff;
-  --text: #111827;
-  --text-secondary: #6b7280;
-  --border: #e5e7eb;
-  --success: #22c55e;
+  --text: #18181b;
+  --text-secondary: #71717a;
+  --text-muted: #a1a1aa;
+  --border: #e4e4e7;
+  --divider: #f4f4f5;
+  --success: #6366f1;
   --warning: #f59e0b;
   --danger: #ef4444;
 }
@@ -28,7 +30,7 @@
 
 html {
   min-height: 100%;
-  background: #f3f4f1;
+  background: #f4f4f5;
   height: 100dvh;
 }
 
@@ -37,8 +39,8 @@ body {
   min-height: 100%;
   margin: 0;
   background:
-    radial-gradient(circle at 14% 10%, rgba(31, 90, 57, 0.12), transparent 30%),
-    linear-gradient(180deg, #fbfbfa 0%, #f4f5f1 100%);
+    radial-gradient(circle at 14% 10%, rgba(24, 24, 27, 0.08), transparent 30%),
+    linear-gradient(180deg, #fafafa 0%, #f4f4f5 100%);
   color: var(--text);
   font-family:
     Pretendard,
@@ -81,7 +83,7 @@ input {
 }
 
 .card-shadow {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 28px rgba(24, 24, 27, 0.08);
 }
 
 .no-scrollbar::-webkit-scrollbar {

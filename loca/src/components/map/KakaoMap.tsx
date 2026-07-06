@@ -53,7 +53,7 @@ export function KakaoMap({ places }: KakaoMapProps) {
   }, [appKey, places]);
 
   return (
-    <div className="relative h-[calc(100dvh-92px)] overflow-hidden bg-[#e8ede5] md:h-[calc(100dvh-56px)]">
+    <div className="relative h-[calc(100dvh-92px)] overflow-hidden bg-zinc-100 md:h-[calc(100dvh-56px)]">
       <div ref={mapRef} className="h-full w-full" />
       {message ? (
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
