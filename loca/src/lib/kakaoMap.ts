@@ -39,6 +39,16 @@ declare global {
 }
 
 const KAKAO_SDK_ID = "kakao-map-sdk";
+const KAKAO_SDK_TIMEOUT_MS = 10_000;
+
+function loadMaps(kakao: KakaoGlobal | undefined, resolve: (kakao: KakaoGlobal) => void, reject: (error: Error) => void) {
+  if (!kakao?.maps) {
+    reject(new Error("Kakao Map SDK loaded without maps API."));
+    return;
+  }
+
+  kakao.maps.load(() => resolve(kakao));
+}
 
 export function loadKakaoMapSdk(appKey: string): Promise<KakaoGlobal> {
   return new Promise((resolve, reject) => {
@@ -47,17 +57,34 @@ export function loadKakaoMapSdk(appKey: string): Promise<KakaoGlobal> {
       return;
     }
 
+    let settled = false;
+    const timeout = window.setTimeout(() => {
+      rejectSdk(new Error("Kakao Map SDK timed out."));
+    }, KAKAO_SDK_TIMEOUT_MS);
+    const resolveSdk = (kakao: KakaoGlobal) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timeout);
+      resolve(kakao);
+    };
+    const rejectSdk = (error: Error) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timeout);
+      reject(error);
+    };
+
     if (window.kakao?.maps) {
-      window.kakao.maps.load(() => resolve(window.kakao as KakaoGlobal));
+      loadMaps(window.kakao, resolveSdk, rejectSdk);
       return;
     }
 
     const existingScript = document.getElementById(KAKAO_SDK_ID);
     if (existingScript) {
       existingScript.addEventListener("load", () => {
-        window.kakao?.maps.load(() => resolve(window.kakao as KakaoGlobal));
+        loadMaps(window.kakao, resolveSdk, rejectSdk);
       });
-      existingScript.addEventListener("error", () => reject(new Error("Kakao Map SDK failed to load.")));
+      existingScript.addEventListener("error", () => rejectSdk(new Error("Kakao Map SDK failed to load.")));
       return;
     }
 
@@ -66,9 +93,11 @@ export function loadKakaoMapSdk(appKey: string): Promise<KakaoGlobal> {
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${appKey}&autoload=false`;
     script.async = true;
     script.onload = () => {
-      window.kakao?.maps.load(() => resolve(window.kakao as KakaoGlobal));
+      loadMaps(window.kakao, resolveSdk, rejectSdk);
     };
-    script.onerror = () => reject(new Error("Kakao Map SDK failed to load."));
+    script.onerror = () => {
+      rejectSdk(new Error("Kakao Map SDK failed to load."));
+    };
     document.head.appendChild(script);
   });
 }

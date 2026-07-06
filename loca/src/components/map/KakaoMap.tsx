@@ -60,7 +60,7 @@ export function KakaoMap({ places }: KakaoMapProps) {
           <div className="rounded-2xl bg-white p-5 text-sm font-semibold leading-6 text-[var(--text-secondary)] shadow-lg">{message}</div>
         </div>
       ) : (
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(47,95,69,0.14)_25%,transparent_25%),linear-gradient(225deg,rgba(47,95,69,0.14)_25%,transparent_25%)] bg-[length:34px_34px] opacity-40" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(47,95,69,0.14)_25%,transparent_25%),linear-gradient(225deg,rgba(47,95,69,0.14)_25%,transparent_25%)] bg-[length:34px_34px] opacity-40" />
       )}
       {selectedPlace ? <MapBottomSheet place={selectedPlace} /> : null}
     </div>
