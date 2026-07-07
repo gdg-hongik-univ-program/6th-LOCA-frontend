@@ -3,12 +3,25 @@ import { Icon } from "@/src/components/common/Icon";
 import { TagChip } from "@/src/components/common/TagChip";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { mockPlaces } from "@/src/mocks/places";
+import Image from "next/image";
 
 const situations = [
-  { label: "혼자 쉬기", href: "/for-you", description: "조용한 자리와 산책 포인트" },
+  {
+    label: "혼자 쉬기",
+    href: "/for-you",
+    description: "조용한 자리와 산책 포인트",
+  },
   { label: "가볍게 걷기", href: "/map", description: "현재 주변의 로컬 스팟" },
-  { label: "숨은 장소 기록", href: "/place/new", description: "지도에 없는 나만의 장소" },
-  { label: "코스로 묶기", href: "/collections", description: "장소를 컬렉션으로 공유" },
+  {
+    label: "숨은 장소 기록",
+    href: "/place/new",
+    description: "지도에 없는 나만의 장소",
+  },
+  {
+    label: "코스로 묶기",
+    href: "/collections",
+    description: "장소를 컬렉션으로 공유",
+  },
 ];
 
 export default function HomePage() {
@@ -17,10 +30,26 @@ export default function HomePage() {
       <div className="w-full md:pl-8">
         <header className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-extrabold tracking-tight text-[var(--brand)] md:hidden">LOCA</h1>
-            <p className="hidden text-sm font-bold text-[var(--brand)] md:block">홍대 로컬 탐험 플랫폼</p>
+            <div className="flex items-center gap-2 md:hidden">
+              <Image
+                src="/LOCA-icon.svg"
+                alt="LOCA 로고 아이콘"
+                width={24}
+                height={24}
+                className="object-contain"
+              />
+              <h1 className="text-2xl font-extrabold tracking-tight text-[var(--brand)]">
+                LOCA
+              </h1>
+            </div>
+            <p className="hidden text-sm font-bold text-[var(--brand)] md:block">
+              홍대 로컬 탐험 플랫폼
+            </p>
           </div>
-          <button aria-label="알림" className="rounded-full p-2 text-zinc-500" type="button">
+          <button
+            aria-label="알림"
+            className="rounded-full p-2 text-zinc-500"
+            type="button">
             <Icon name="bell" />
           </button>
         </header>
@@ -40,43 +69,62 @@ export default function HomePage() {
             </p>
             <div className="mt-7 grid gap-3 sm:grid-cols-2">
               {situations.map((item) => (
-                <Link className="rounded-2xl border border-[var(--border)] bg-white/80 p-4 transition hover:bg-zinc-50 md:bg-zinc-50" href={item.href} key={item.label}>
+                <Link
+                  className="rounded-2xl border border-[var(--border)] bg-white/80 p-4 transition hover:bg-zinc-50 md:bg-zinc-50"
+                  href={item.href}
+                  key={item.label}>
                   <p className="font-extrabold">{item.label}</p>
-                  <p className="mt-1 text-xs font-semibold text-zinc-500">{item.description}</p>
+                  <p className="mt-1 text-xs font-semibold text-zinc-500">
+                    {item.description}
+                  </p>
                 </Link>
               ))}
             </div>
           </div>
 
           <div className="grid gap-4 md:grid-rows-2">
-            <Link className="block rounded-2xl bg-[#1e1e1e] p-5 text-white shadow-[0_14px_34px_rgba(24,24,27,0.18)] md:p-7" href="/for-you">
+            <Link
+              className="block rounded-2xl bg-[#1e1e1e] p-5 text-white shadow-[0_14px_34px_rgba(24,24,27,0.18)] md:p-7"
+              href="/for-you">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="text-lg font-extrabold text-white md:text-2xl">ForYou</h3>
+                  <h3 className="text-lg font-extrabold text-white md:text-2xl">
+                    ForYou
+                  </h3>
                   <p className="mt-4 text-sm font-medium leading-6 text-white/80 md:text-base">
                     내 기록으로 열리는
                     <br />
                     개인 맞춤 장소 추천
                   </p>
                 </div>
-                <Icon className="h-6 w-6 text-white/80 md:h-7 md:w-7" name="heart" />
+                <Icon
+                  className="h-6 w-6 text-white/80 md:h-7 md:w-7"
+                  name="heart"
+                />
               </div>
               <span className="mt-6 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-[var(--brand)]">
                 <Icon className="h-4 w-4" name="chevron" />
               </span>
             </Link>
 
-            <Link className="block rounded-2xl bg-zinc-100 p-5 text-[var(--text)] md:p-7" href="/explore">
+            <Link
+              className="block rounded-2xl bg-zinc-100 p-5 text-[var(--text)] md:p-7"
+              href="/explore">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="text-lg font-extrabold text-[var(--brand)] md:text-2xl">Explore</h3>
+                  <h3 className="text-lg font-extrabold text-[var(--brand)] md:text-2xl">
+                    Explore
+                  </h3>
                   <p className="mt-4 text-sm font-semibold leading-6 text-zinc-500 md:text-base">
                     Public Place와
                     <br />
                     Private Place 둘러보기
                   </p>
                 </div>
-                <Icon className="h-6 w-6 text-[var(--brand)] md:h-7 md:w-7" name="bookmark" />
+                <Icon
+                  className="h-6 w-6 text-[var(--brand)] md:h-7 md:w-7"
+                  name="bookmark"
+                />
               </div>
               <span className="mt-6 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand)] text-white">
                 <Icon className="h-4 w-4" name="chevron" />
@@ -86,30 +134,49 @@ export default function HomePage() {
         </section>
 
         <section className="mt-6 grid gap-3 md:grid-cols-2">
-          <Link className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]" href="/place/new">
+          <Link
+            className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]"
+            href="/place/new">
             <p className="text-lg font-extrabold">Private Place 등록</p>
-            <p className="mt-2 text-sm font-semibold text-zinc-500">지도에 없는 벤치, 포토 스팟, 산책길을 남겨보세요.</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-500">
+              지도에 없는 벤치, 포토 스팟, 산책길을 남겨보세요.
+            </p>
           </Link>
-          <Link className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]" href="/collections">
+          <Link
+            className="rounded-2xl bg-white p-5 shadow-[0_10px_28px_rgba(24,24,27,0.08)]"
+            href="/collections">
             <p className="text-lg font-extrabold">장소 컬렉션</p>
-            <p className="mt-2 text-sm font-semibold text-zinc-500">장소들을 코스로 묶고 링크로 공유하세요.</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-500">
+              장소들을 코스로 묶고 링크로 공유하세요.
+            </p>
           </Link>
         </section>
 
         <section className="hidden md:mt-8 md:block">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-extrabold">요즘 눈에 띄는 장소</h2>
-            <Link className="text-sm font-bold text-[var(--brand)]" href="/explore">
+            <Link
+              className="text-sm font-bold text-[var(--brand)]"
+              href="/explore">
               전체보기
             </Link>
           </div>
           <div className="mt-4 grid grid-cols-3 gap-4">
             {mockPlaces.slice(0, 3).map((place) => (
-              <Link className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_28px_rgba(0,0,0,0.06)]" href={`/place/${place.id}`} key={place.id}>
-                <img alt="" className="h-28 w-full object-cover" src={place.imageUrl} />
+              <Link
+                className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_28px_rgba(0,0,0,0.06)]"
+                href={`/place/${place.id}`}
+                key={place.id}>
+                <img
+                  alt=""
+                  className="h-28 w-full object-cover"
+                  src={place.imageUrl}
+                />
                 <div className="p-4">
                   <p className="font-extrabold">{place.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-zinc-500">{place.categoryLabel} · {place.distance}</p>
+                  <p className="mt-1 text-xs font-semibold text-zinc-500">
+                    {place.categoryLabel} · {place.distance}
+                  </p>
                 </div>
               </Link>
             ))}
