@@ -46,12 +46,27 @@ export default function HomePage() {
               홍대 로컬 탐험 플랫폼
             </p>
           </div>
-          <button
-            aria-label="알림"
-            className="rounded-full p-2 text-zinc-500"
-            type="button">
-            <Icon name="bell" />
-          </button>
+          <div className="flex items-center gap-1 md:gap-2">
+            <Link
+              href="/contributors"
+              aria-label="Contributors"
+              className="flex items-center justify-center rounded-full bg-zinc-800 p-2 !text-white hover:bg-zinc-700 md:hidden">
+              <span>Contributors</span>
+            </Link>
+
+            <Link
+              href="/contributors"
+              className="hidden items-center gap-1.5 rounded-full bg-zinc-800 px-4 py-2 text-xs font-bold !text-white transition hover:bg-zinc-700 md:inline-flex">
+              <span>Contributors</span>
+            </Link>
+
+            <button
+              aria-label="알림"
+              className="rounded-full p-2 text-zinc-500"
+              type="button">
+              <Icon name="bell" />
+            </button>
+          </div>
         </header>
 
         <section className="mt-12 grid gap-8 md:mt-8 md:grid-cols-[1.05fr_0.95fr] md:items-stretch">
@@ -167,10 +182,12 @@ export default function HomePage() {
                 className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_28px_rgba(0,0,0,0.06)]"
                 href={`/place/${place.id}`}
                 key={place.id}>
-                <img
+                <Image
                   alt=""
                   className="h-28 w-full object-cover"
                   src={place.imageUrl}
+                  width={400}
+                  height={180}
                 />
                 <div className="p-4">
                   <p className="font-extrabold">{place.name}</p>
