@@ -27,7 +27,7 @@ export default function OnboardingPage() {
       <div className="grid min-h-[620px] items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <section>
           <p className="text-sm font-black text-zinc-400">{step + 1}/3</p>
-          <h1 className="mt-8 max-w-xl text-4xl font-black leading-tight lg:text-6xl">
+          <h1 className="mt-6 max-w-xl text-4xl font-black leading-tight lg:text-6xl">
             {current.title}
           </h1>
           <p className="mt-6 max-w-md text-base font-semibold leading-7 text-zinc-500">
