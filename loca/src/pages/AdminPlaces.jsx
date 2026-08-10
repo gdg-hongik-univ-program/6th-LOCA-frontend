@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { getPlaces } from "@/src/services/placeService";
 import { getTags } from "@/src/services/tagService";
@@ -31,4 +31,3 @@ export default function AdminPlacesPage() {
     </AppShell>
   );
 }
-

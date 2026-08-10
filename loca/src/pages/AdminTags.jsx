@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AppShell } from "@/src/components/layout/AppShell";
 import { getTags } from "@/src/services/tagService";
 import { AdminTagsClient } from "./AdminTagsClient";
@@ -28,4 +28,3 @@ export default function AdminTagsPage() {
     </AppShell>
   );
 }
-
